@@ -240,17 +240,17 @@ if __name__ == '__main__':
     """
     Attempting to simulate 2000 wells, each with 500 data points, for a total of 1M data points
     """
-    dataset_version = 'manywells-sol-1'  # Update before running script to generate a new dataset
+    dataset_version = 'manywells-sol-2'  # Update before running script to generate a new dataset
 
     # Simulation settings
-    n_wells = 2000      # Number of wells to simulate
-    n_sim = 500         # Number of data points to simulate per well  NOTE: sim does not terminate when setting n_sim = 1 (probably because the acceptance criteria for a well are never satisfied since they are based on variances)
+    n_wells = 20 # 2000   # Number of wells to simulate
+    n_sim = 100 # 500    # Number of data points to simulate per well  NOTE: sim does not terminate when setting n_sim = 1 (probably because the acceptance criteria for a well are never satisfied since they are based on variances)
 
     # Start timer
     t0 = time.time()
 
     # Create process pool
-    n_processes = min(max(1, multiprocessing.cpu_count() - 2), n_wells)
+    n_processes = 4 # min(max(1, multiprocessing.cpu_count() - 2), n_wells)
     pool = multiprocessing.Pool(processes=n_processes)
     print(f'Created pool of {n_processes} processes')
 
